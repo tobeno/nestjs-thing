@@ -1,0 +1,58 @@
+version: '3.1'
+volumes:
+  # Persistent volumes, not mapped to avoid permission issues under Windows
+  nameit-postgres-data:
+  nameit-pgadmin4-data:
+services:
+  nameit-postgres:
+    image: postgres:11.6
+    restart: always
+    ports:
+      - 5432:5432
+    volumes:
+      - ./docker/postgres/init:/docker-entrypoint-initdb.d
+      - nameit-postgres-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: root
+      POSTGRES_USER: admin
+      POSTGRES_DATABASES: app,app_test
+
+  nameit-pgadmin4:
+    image: dpage/pgadmin4
+    restart: always
+    depends_on:
+      - nameit-postgres
+    ports:
+      - 8080:80
+    volumes:
+      - nameit-pgadmin4-data:/var/lib/pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@pgadmin
+      PGADMIN_DEFAULT_PASSWORD: root
+    logging:
+      driver: none
+
+  nameit:
+    image: node:12
+    container_name: nameit
+    depends_on:
+      - nameit-pgadmin4
+      - nameit-postgres
+    working_dir: /app
+    expose:
+      - '3000'
+    ports:
+      - 3000:3000
+    volumes:
+      - ./bin/:/app/bin/:cached
+      - ./docs/:/app/docs/:cached
+      - ./docker/nameit/init/wait-for-services.sh:/app/docker/nameit/init/wait-for-services.sh:cached
+      - ./src/:/app/src/:cached
+      - ./test/:/app/test/:cached
+      - ./nest-cli.json:/app/nest-cli.json:cached
+      - ./package.json:/app/package.json:cached
+      - ./package-lock.json:/app/package-lock.json:cached
+      - ./tsconfig.json:/app/tsconfig.json:cached
+      - ./tsconfig.build.json:/app/tsconfig.build.json:cached
+      - /app/node_modules/ # Anonymous volume to speed things up without causing platform issues
+    command: bash -c 'npm i && docker/nameit/init/wait-for-services.sh && npm run start:dev'
