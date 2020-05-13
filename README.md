@@ -1,6 +1,10 @@
-# NestJS Starter
+# nameit
 
 A basic NestJS starter project with some defaults we use at [Limehome](https://www.limehome.com).
+
+Remember to replace `nameit` with a proper project name.
+To make you life easy, pick something in kebab-case.
+Then it as simple as a global replace in code + a few directory renames.
 
 ## Installation
 
@@ -33,3 +37,7 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
+
+## Credits
+
+- create-multiple-postgresql-databases.sh from https://github.com/mrts/docker-postgresql-multiple-databases

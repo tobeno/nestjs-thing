@@ -1,5 +1,5 @@
 {
-  "name": "nestjs-starter",
+  "name": "nameit",
   "version": "0.0.1",
   "description": "",
   "author": "",
@@ -20,7 +20,10 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "test:eslint": "jest --config ./.eslintplugin/jest-eslint.json"
+    "test:eslint": "jest --config ./.eslintplugin/jest-eslint.json",
+    "docker:up": "docker-compose -f docker-compose.yml up",
+    "docker-down": "docker-compose -f docker-compose.yml down --remove-orphans",
+    "docker-attach": "docker exec -it nameit bash"
   },
   "dependencies": {
     "@nestjs/common": "^7.0.0",
@@ -55,7 +58,8 @@
     "ts-loader": "^6.2.1",
     "ts-node": "^8.6.2",
     "tsconfig-paths": "^3.9.0",
-    "typescript": "^3.7.4"
+    "typescript": "^3.7.4",
+    "wait-on": "^5.0.0"
   },
   "jest": {
     "moduleFileExtensions": [
