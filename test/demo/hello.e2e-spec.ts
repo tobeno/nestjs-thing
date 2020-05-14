@@ -1,9 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
-import { AppModule } from '../src/app.module';
+import { AppModule } from '../../src/app.module';
 
-describe('AppController (e2e)', () => {
+describe('HelloController (e2e)', () => {
   let app: INestApplication;
 
   beforeEach(async () => {
@@ -15,13 +15,14 @@ describe('AppController (e2e)', () => {
     await app.init();
   });
 
-  describe('/ (GET)', () => {
+  describe('/demo/hello (GET)', () => {
     // eslint-disable-next-line jest/expect-expect
-    it('should return 200', () => {
-      return request(app.getHttpServer())
-        .get('/')
-        .expect(200)
-        .expect('Hello World!');
+    it('should return 200', async () => {
+      const response = await request(app.getHttpServer())
+        .get('/demo/hello')
+        .expect(200);
+
+      expect(response.text).toBe('Hello World!');
     });
   });
 });
