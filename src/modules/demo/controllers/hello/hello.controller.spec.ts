@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { HelloController } from './hello.controller';
 import { HelloService } from '../../services/hello/hello.service';
-import { HelloServiceMockFactory } from '../../mock-factories/hello-service.mock-factory';
+import { HelloServiceMockFactory } from '../../services/hello/hello.service.mock-factory';
 
 describe('Hello Controller', () => {
   let controller: HelloController;

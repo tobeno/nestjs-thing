@@ -1,4 +1,4 @@
-import { HelloService } from '../services/hello/hello.service';
+import { HelloService } from './hello.service';
 
 export class HelloServiceMockFactory {
   static create(data: Partial<HelloService> = {}): jest.Mocked<HelloService> {
