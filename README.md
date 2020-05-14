@@ -1,8 +1,8 @@
-# nameit
+# nestjs-thing
 
 A basic NestJS starter project with some defaults we use at [Limehome](https://www.limehome.com).
 
-Remember to replace `nameit` with a proper project name.
+Remember to replace `nestjs-thing` with a proper project name.
 To make you life easy, pick something in kebab-case.
 Then it as simple as a global replace in code + a few directory renames.
 

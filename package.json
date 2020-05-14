@@ -1,5 +1,5 @@
 {
-  "name": "nameit",
+  "name": "nestjs-thing",
   "version": "0.0.1",
   "description": "",
   "author": "",
@@ -23,7 +23,7 @@
     "test:eslint": "jest --config ./.eslintplugin/jest-eslint.json",
     "docker:up": "docker-compose -f docker-compose.yml up",
     "docker-down": "docker-compose -f docker-compose.yml down --remove-orphans",
-    "docker-attach": "docker exec -it nameit bash"
+    "docker-attach": "docker exec -it nestjs-thing bash"
   },
   "dependencies": {
     "@nestjs/common": "^7.0.0",
