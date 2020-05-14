@@ -1,0 +1,24 @@
+import { Test, TestingModule } from '@nestjs/testing';
+import { HelloService } from './hello.service';
+
+describe('DemoService', () => {
+  let service: HelloService;
+
+  beforeEach(async () => {
+    const module: TestingModule = await Test.createTestingModule({
+      providers: [HelloService],
+    }).compile();
+
+    service = module.get<HelloService>(HelloService);
+  });
+
+  it('should be defined', () => {
+    expect(service).toBeDefined();
+  });
+
+  describe('getHello', () => {
+    it('should return ’Hello World!’', () => {
+      expect(service.getHello()).toBe('Hello World!');
+    });
+  });
+});
