@@ -9,6 +9,7 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
 import { DemoModule } from './modules/demo/demo.module';
 import { HTTP_CONFIG_DEFAULT } from './constants/http.constants';
 import { GlobalModule } from './modules/global/global.module';
+import { ApidocRedirectMiddleware } from './middlewares/apidoc-redirect/apidoc-redirect.middleware';
 
 @Module({
   imports: [DemoModule, GlobalModule, HttpModule],
@@ -17,6 +18,7 @@ import { GlobalModule } from './modules/global/global.module';
       provide: APP_INTERCEPTOR,
       useClass: ClassSerializerInterceptor,
     },
+    ApidocRedirectMiddleware,
   ],
 })
 export class AppModule implements OnModuleInit {
