@@ -6,6 +6,7 @@ import {
   BadRequestException,
 } from '@nestjs/common';
 import { ExpressAdapter } from '@nestjs/platform-express';
+import * as helmet from 'helmet';
 import { AppModule } from './app.module';
 import { AppConfigService } from './modules/global/services/config/app-config.service';
 
@@ -26,6 +27,8 @@ export async function createApp(
     new ExpressAdapter(expressApp),
   );
   const appConfigService = app.get(AppConfigService);
+
+  app.use(helmet());
 
   useValidation(app);
 
