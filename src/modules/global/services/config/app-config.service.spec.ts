@@ -26,6 +26,7 @@ describe('AppConfigService', () => {
       { prefix: 'v2', basePath: '/v2', baseUrl: 'http://localhost:3000/v2' },
     ],
     [{ PREFIX: 'v2' }, { prefix: 'v2' }],
+    [{ VERSION: '1.0.0' }, { version: '1.0.0' }],
   ])(
     'should create config for env %j matching %j',
     (

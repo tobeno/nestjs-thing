@@ -13,6 +13,10 @@ export class AppConfigService {
     return this.configService.get<string>('PREFIX');
   }
 
+  get version() {
+    return this.configService.get<string>('VERSION');
+  }
+
   get basePath() {
     return `/${this.prefix}`;
   }
