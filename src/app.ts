@@ -32,6 +32,8 @@ export async function createApp(
 
   useValidation(app);
 
+  app.enableCors();
+
   app.setGlobalPrefix(appConfigService.prefix);
 
   return app;
