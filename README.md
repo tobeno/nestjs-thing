@@ -2,6 +2,8 @@
 
 A basic NestJS starter project with some defaults.
 
+For all questions regarding NestJS check out their [docs](https://docs.nestjs.com/).
+
 Remember to replace `nestjs-thing` with a proper project name.
 To make you life easy, pick something in kebab-case.
 Then it as simple as a global replace in code + a few directory renames.
@@ -50,4 +52,5 @@ $ npm run test:cov
 
 ## Credits
 
+- [NestJS](https://nestjs.com/) for their amazing framework
 - create-multiple-postgresql-databases.sh from https://github.com/mrts/docker-postgresql-multiple-databases
