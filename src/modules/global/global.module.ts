@@ -1,6 +1,7 @@
 import { Global, Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { AppConfigService } from './services/config/app-config.service';
+import { AppLoggerService } from './services/logging/app-logger.service';
 
 /**
  * Module containing global services that are needed everywhere.
@@ -15,7 +16,7 @@ import { AppConfigService } from './services/config/app-config.service';
       isGlobal: true,
     }),
   ],
-  providers: [AppConfigService],
-  exports: [AppConfigService],
+  providers: [AppConfigService, AppLoggerService],
+  exports: [AppConfigService, AppLoggerService],
 })
 export class GlobalModule {}

@@ -9,12 +9,13 @@ import { ExpressAdapter } from '@nestjs/platform-express';
 import * as helmet from 'helmet';
 import { AppModule } from './app.module';
 import { AppConfigService } from './modules/global/services/config/app-config.service';
+import { AppLoggerService } from './modules/global/services/logging/app-logger.service';
 
 export function useValidation(app: INestApplication): void {
   app.useGlobalPipes(
     new ValidationPipe({
       transform: true,
-      exceptionFactory: errors => new BadRequestException(errors),
+      exceptionFactory: (errors) => new BadRequestException(errors),
     }),
   );
 }
@@ -27,6 +28,8 @@ export async function createApp(
     new ExpressAdapter(expressApp),
   );
   const appConfigService = app.get(AppConfigService);
+
+  app.useLogger(await app.resolve(AppLoggerService));
 
   app.use(helmet());
 
