@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import { Express } from 'express';
 import { ExpressAdapter } from '@nestjs/platform-express';
+import { useValidation } from '../../src/app';
 import { AppModule } from '../../src/app.module';
 
 /**
@@ -20,6 +21,9 @@ export async function createTestingInstance(
   const app = module.createNestApplication(
     expressApp ? new ExpressAdapter(expressApp) : null,
   );
+
+  useValidation(app);
+
   await app.init();
 
   return {
