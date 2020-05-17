@@ -1,5 +1,8 @@
 # nestjs-thing
 
+![Node.js CI](https://github.com/tobeno/nestjs-thing/workflows/Node.js%20CI/badge.svg)
+[![codecov](https://codecov.io/gh/tobeno/nestjs-thing/branch/master/graph/badge.svg)](https://codecov.io/gh/tobeno/nestjs-thing)
+
 A basic NestJS starter project with some defaults.
 
 For all questions regarding NestJS check out their [docs](https://docs.nestjs.com/).
