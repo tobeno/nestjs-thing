@@ -5,7 +5,7 @@ volumes:
   nestjs-thing-pgadmin4-data:
 services:
   nestjs-thing-postgres:
-    image: postgres:11.6
+    image: postgres:11.8
     restart: always
     ports:
       - 5432:5432
